@@ -53,6 +53,17 @@ This means that there is a high possibity that there will be candidates ready to
 
 The list of eligable mentees is here: [Eligable for Mentor](Data/Challenge_Mentee_list.csv)
 
+## Hiring Recomendations and further analysis
+
+If we keep the current criteria, there is a serious gap between eligable senior staff who may retire, vs candidates ready to take their place. with only 1549 employees in a position to be trained to replace 33,118 retirees, there is a gap of 31,569. We would need to begin hiring people now in order to fufil the demand.
+
+Some of the options are as follows:
+
+1) Expand the crtieris for eligable mentees; There is still a significant pool of people who may be ready for the challenge of a higher position. Expanding the list now will make sure that there is significant resources avaialble to fill vacant positions.
+2) Consolidate positions; Its outside of the available resources, but it would be wise to consider eliminating any redundant positons to help offset the retiree list. Do we really need all of those Senior Engineers? how many could be eliminated without significanlty affecting our product output?
+3) Hire more people now, and begin promiting from within; If we create a training program, we can try to get ahead of the retirees and get underserved staffers a chance to excel.
+
+
 # Technical Report
 ## queries
 
@@ -85,8 +96,11 @@ INNER JOIN dept_emp as de
 ON (e.emp_no = de.emp_no)  
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')  
      AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')  
-	 AND (de.to_date = '9999-01-01');  
-   
+	 AND (de.to_date = '9999-01-01'); 
+	 
+	 
+Here is a sample of the output from this Query:
+![Retiree Output](Data/Output_retirees.png)
 
 This allowed me to pull all retirement eligable employees and their title(s) into a new table. 
 
@@ -98,6 +112,7 @@ A similar query was used to determine any employee who is eligable to be mentore
 This criteris was much simpler, but the overall query was the same:
 
 --Employees Ready for Mentors. 
+
 SELECT e.emp_no,  
 e.first_name,  
 e.last_name,  
@@ -115,6 +130,8 @@ ON (e.emp_no = de.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')   
 	 AND (de.to_date = '9999-01-01');   
 
+An example of the output from this query is:
+![Mentee Output](Data/Output_mentees.png)
 
 After obtaining both lists of candidates, They needed to be sorted out and extra titles had to be removed; Since employees can cange titles during their tenure at the company, we only need to know their current title. This cleaned up the lists, and allowed a usable output.
 

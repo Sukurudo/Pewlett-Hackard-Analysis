@@ -119,5 +119,6 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 After obtaining both lists of candidates, They needed to be sorted out and extra titles had to be removed; Since employees can cange titles during their tenure at the company, we only need to know their current title. This cleaned up the lists, and allowed a usable output.
 
 All of the queries created and used are here: [Challenge Queries](Queries/Challenge.sql)
+
 The Schema used to create the tables are here: [Table Creation Schema](Queries/schema.sql)
 
